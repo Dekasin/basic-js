@@ -4,14 +4,7 @@ module.exports = function transform(arr) {
 
        for (let i = 0; i < arr.length; i++) {
         switch(arr[i]) {
-            case "--discard-next" : 
-            i == arr.length-1 ? arr.splice(i, 1) : arr.splice(i, 2);
-            i--;
-          break;
-            case "--discard-prev" : 
-            i == 0 ? arr.splice(i, 1):arr.splice(i-1, 2);
-            i--;
-          break;
+        
             case "--double-next" : 
             i == arr.length-1 ? arr.splice(i, 1) : arr[i] = arr[i+1];
             i--;
@@ -21,9 +14,20 @@ module.exports = function transform(arr) {
             i--;
           break;
         }
+      }
+        for (let i = 0; i < arr.length; i++) {
+          switch(arr[i]) {
+              case "--discard-next" : 
+              i == arr.length-1 ? arr.splice(i, 1) : arr.splice(i, 2);
+              i--;
+            break;
+              case "--discard-prev" : 
+              i == 0 ? arr.splice(i, 1):arr.splice(i-1, 2);
+              i--;
+            }
   
             }
-} else {
+   } else {
     throw Error;
   }
     return arr;
