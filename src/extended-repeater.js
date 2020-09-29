@@ -12,19 +12,23 @@ module.exports = function repeater(str, options) {
     };    
     if (options.separator != undefined){
         separator = options.separator;
-         };    
-    if (options.additionRepeatTimes != undefined){
-        additionRepeatTimes = options.additionRepeatTimes;
-        additionSeparator ='|';
-    };    
+         }; 
     
      if (options.addition != undefined){
         addition = options.addition;
         additionRepeatTimes = 1;
  }; 
+       
+    if (options.additionRepeatTimes != undefined){
+        additionRepeatTimes = options.additionRepeatTimes;
+        additionSeparator ='|';
+    };    
     
     if (options.additionSeparator != undefined){
         additionSeparator = options.additionSeparator;
+        if(additionRepeatTimes == 1){
+            additionSeparator = '';
+        };
     };
     
     str = str;
