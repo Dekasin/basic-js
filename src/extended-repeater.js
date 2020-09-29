@@ -1,16 +1,45 @@
-module.exports = function repeater( str, options={'repeatTimes':0 ,'separator':'+', addition: '', additionRepeatTimes : 0, additionSeparator:'|'}) {
-    //throw 'Not implemented';
-    // remove line with error and write your code here
-    let result = '' ;
-    for (let i = 1; i < options.repeatTimes; i++){
-        result+=str;
-        if (options.additionRepeatTimes > 0){
-            options.additionRepeatTimes-=1;
-            result+=options.addition;
-        }
-        result+=toString(options.separator);
+module.exports = function repeater(str, options) {
+    
+    let result = '',
+        repeatTimes = 0,
+        separator = '+',
+        addition = '',   
+        additionRepeatTimes = 0,
+        additionSeparator ='';
+        
+    if (options.repeatTimes != undefined){
+        repeatTimes = options.repeatTimes;
+    };    
+    if (options.separator != undefined){
+        separator = options.separator;
+         };    
+    if (options.additionRepeatTimes != undefined){
+        additionRepeatTimes = options.additionRepeatTimes;
+        additionSeparator ='|';
+    };    
+    
+     if (options.addition != undefined){
+        addition = options.addition;
+        additionRepeatTimes = 1;
+ }; 
+    
+    if (options.additionSeparator != undefined){
+        additionSeparator = options.additionSeparator;
     };
-    result+=str;
+    
+    str = str;
+    for (let i = 1; i < repeatTimes; i++) {
+        result += str;
+        for (let j = 0; j < additionRepeatTimes; j++) {
+
+            result = result + addition + additionSeparator;
+        }
+        result += separator;
+    };
+    result += str;
+    for (let j = 0; j < additionRepeatTimes; j++) {
+
+            result = result + addition + additionSeparator;
+        }
     return result;
 };
-  
