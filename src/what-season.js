@@ -1,20 +1,13 @@
 module.exports = function getSeason(date ) {
   
-  // let absense = "";
-  //   absense = date;
-
-  // if (absense == ""){
-  //   return 'Unable to determine the time of year!';
-  // }
-  
-  // if (isNaN(date)){
-  //   throw 'Error';
-  // }
+  if (arguments.length == 0){
+    return 'Unable to determine the time of year!';
+  }
   
   if (isNaN(date)){
-      return 'Unable to determine the time of year!';
-    }
-
+    throw 'Error';
+  }
+  
     let month = date.getMonth();
     
     if(month<2 || month >10){
