@@ -1,7 +1,7 @@
 module.exports = function repeater(str, options) {
 
     let result = '',
-        repeatTimes = 0,
+        repeatTimes = 1,
         separator = '+',
         addition = '',
         additionRepeatTimes = 0,
@@ -12,41 +12,44 @@ module.exports = function repeater(str, options) {
     };
 
     if (options.separator != undefined) {
-        separator = options.separator;
+        separator = options.separator + "";
     };
 
-    if (options.addition != undefined) {
-        addition = options.addition;
+    if (options.addition+"" != 'undefined') {
+        addition = options.addition + "";
         additionRepeatTimes = 1;
+        
     };
 
-    if (options.additionRepeatTimes != undefined) {
+    if (options.additionRepeatTimes != undefined && options.additionRepeatTimes > 1) {
         additionRepeatTimes = options.additionRepeatTimes;
         additionSeparator = '|';
     };
 
-    if (options.additionSeparator != undefined) {
-        additionSeparator = options.additionSeparator;
+    if (options.additionSeparator+ "" != 'undefined' ) {
+        additionSeparator = options.additionSeparator + "";
 
-    if (additionRepeatTimes == 1) {
-            additionSeparator = '';
-        };
-    };
+       };
 
 
-        for (let i = 1; i < repeatTimes; i++) {
-        result += str;
-            for (let j = 1; j < additionRepeatTimes; j++) {
-            result = result + addition + additionSeparator;
+        for (let i = 0, m = repeatTimes; i < repeatTimes; i++) {
+        m --;
+            result += str;
+
+            for (let j = 0, k = additionRepeatTimes; j < additionRepeatTimes; j++) {
+                k--;
+                if (k>0) {
+                    result = result + addition + additionSeparator;
+                } else {
+                    result = result + addition;
+                };
+                 }
+            if (m > 0){
+               result += separator; 
             }
-        result += separator;
+        
     };
 
-    result += str;
-
-    // for (let k = 0; k < additionRepeatTimes; k++) {
-    //     result = result + addition + additionSeparator;
-    
-
+   
     return result;
 };
