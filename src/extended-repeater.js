@@ -1,49 +1,52 @@
 module.exports = function repeater(str, options) {
-    
+
     let result = '',
         repeatTimes = 0,
         separator = '+',
-        addition = '',   
+        addition = '',
         additionRepeatTimes = 0,
-        additionSeparator ='';
-        
-    if (options.repeatTimes != undefined){
+        additionSeparator = '';
+
+    if (options.repeatTimes != undefined) {
         repeatTimes = options.repeatTimes;
-    };    
-    if (options.separator != undefined){
+    };
+
+    if (options.separator != undefined) {
         separator = options.separator;
-         }; 
-    
-     if (options.addition != undefined){
+    };
+
+    if (options.addition != undefined) {
         addition = options.addition;
         additionRepeatTimes = 1;
- }; 
-       
-    if (options.additionRepeatTimes != undefined){
+    };
+
+    if (options.additionRepeatTimes != undefined) {
         additionRepeatTimes = options.additionRepeatTimes;
-        additionSeparator ='|';
-    };    
-    
-    if (options.additionSeparator != undefined){
+        additionSeparator = '|';
+    };
+
+    if (options.additionSeparator != undefined) {
         additionSeparator = options.additionSeparator;
-        if(additionRepeatTimes == 1){
+
+    if (additionRepeatTimes == 1) {
             additionSeparator = '';
         };
     };
-    
-    str = str;
-    for (let i = 1; i < repeatTimes; i++) {
-        result += str;
-        for (let j = 0; j < additionRepeatTimes; j++) {
 
+
+        for (let i = 1; i < repeatTimes; i++) {
+        result += str;
+            for (let j = 1; j < additionRepeatTimes; j++) {
             result = result + addition + additionSeparator;
-        }
+            }
         result += separator;
     };
-    result += str;
-    for (let j = 0; j < additionRepeatTimes; j++) {
 
-            result = result + addition + additionSeparator;
-        }
+    result += str;
+
+    // for (let k = 0; k < additionRepeatTimes; k++) {
+    //     result = result + addition + additionSeparator;
+    
+
     return result;
 };
